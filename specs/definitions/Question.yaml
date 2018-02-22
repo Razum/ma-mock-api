@@ -1,0 +1,12 @@
+Question:
+  type: object
+  properties:
+    id:
+      type: string
+      description: 'Unique identifier representing a specific question'
+    description:
+      type: string
+      description: 'Question description.'
+      x-chance-type: sentence
+      x-type-options:
+        words: 5

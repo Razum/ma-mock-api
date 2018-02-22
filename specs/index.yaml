@@ -1,0 +1,104 @@
+swagger: '2.0'
+info:
+  title: Modern Appraisal Mock API
+  description: Modern Appraisal Mock API fro web and mobile
+  version: "1.0.0"
+schemes:
+  - https
+basePath: /v1
+produces:
+  - application/json
+paths:
+  /questions:
+    get:
+      summary: Questions list
+      description: |
+        The Questions endpoint returns all appraisal form questions
+      parameters:
+        - name: section
+          in: query
+          description: section name.
+          required: true
+          type: string
+          format: double
+      responses:
+        200:
+          description: An array of questions
+          schema:
+            type: array
+            items:
+              $ref: 'definitions/Question.yaml#/Question'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: 'definitions/Error.yaml#/Error'
+
+  /sections:
+    get:
+      responses:
+        200:
+          schema:
+            type: array
+            items:
+              $ref: 'definitions/Section.yaml#/Section'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: 'definitions/Error.yaml#/Error'
+
+  /sections/{sectionId}:
+    get:
+      parameters:
+        sectionId:
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        200:
+          schema:
+            $ref: 'definitions/Section.yaml#/Section'
+
+  /answers/{facilityId}:
+    get:
+      parameters:
+        facilityId:
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        200:
+          schema:
+            $ref: 'definitions/Answer.yaml#/Answer'
+
+  /answers/{facilityId}/section/{sectionId}:
+    get:
+      parameters:
+        facilityId:
+          in: path
+          schema:
+            type: string
+          required: true
+        sectionId:
+          in: path
+          schema:
+          type: string
+          required: true
+      responses:
+        200:
+          schema:
+            $ref: 'definitions/Answer.yaml#/Answer'
+
+  /users/{userId}:
+    get:
+      parameters:
+        userId:
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        200:
+          schema:
+            $ref: 'definitions/User.yaml#/User'
