@@ -5,7 +5,7 @@ info:
   version: "1.0.0"
 schemes:
   - https
-basePath: /v1
+basePath: api/v1
 produces:
   - application/json
 paths:
@@ -14,13 +14,6 @@ paths:
       summary: Questions list
       description: |
         The Questions endpoint returns all appraisal form questions
-      parameters:
-        - name: section
-          in: query
-          description: section name.
-          required: true
-          type: string
-          format: double
       responses:
         200:
           description: An array of questions
@@ -90,6 +83,24 @@ paths:
           schema:
             $ref: 'definitions/Answer.yaml#/Answer'
 
+  /answers/{facilityId}/{questionId}:
+    get:
+      parameters:
+        facilityId:
+          in: path
+          schema:
+            type: string
+          required: true
+        questionId:
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        200:
+          schema:
+            $ref: 'definitions/Question.yaml#/Question'
+
   /users/{userId}:
     get:
       parameters:
@@ -102,3 +113,37 @@ paths:
         200:
           schema:
             $ref: 'definitions/User.yaml#/User'
+
+  /users/{userId}/assignments:
+    get:
+      parameters:
+        userId:
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        200:
+          schema:
+            type: array
+            items:
+              $ref: 'definitions/Assignment.yaml#/Assignment'
+
+  /users/{userId}/assignments/{assignmentId}:
+    get:
+      parameters:
+        userId:
+          in: path
+          schema:
+            type: string
+          required: true
+        assignmentId:
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        200:
+          schema:
+            $ref: 'definitions/Assignment.yaml#/Assignment'
+

@@ -4,15 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "prestart": "npm install",
     "start": "node index.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.2",
-    "swagger-mock-api": "^1.5.2",
-    "yargs": "^11.0.0"
+    "swagger-mock-api": "^1.5.2"
   },
   "devDependencies": {
     "cors": "^2.8.4"
