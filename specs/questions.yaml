@@ -1,0 +1,57 @@
+swagger: '2.0'
+info:
+  title: Modern Appraisal Mock API
+  description: Modern Appraisal Mock API fro web and mobile
+  version: "1.0.0"
+schemes:
+  - https
+basePath: /v1
+produces:
+  - application/json
+paths:
+  /questions:
+    get:
+      summary: Questions list
+      description: |
+        The Questions endpoint returns all appraisal form questions
+      parameters:
+        - name: section
+          in: query
+          description: section name.
+          required: true
+          type: string
+          format: double
+      responses:
+        200:
+          description: An array of questions
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Question'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+definitions:
+  Question:
+    type: object
+    properties:
+      id:
+        type: string
+        description: Unique identifier representing a specific question
+      description:
+        type: string
+        description: Question description.
+        x-chance-type: sentence
+        x-type-options:
+          words: 5
+  Error:
+    type: object
+    properties:
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string
+      fields:
+        type: string
