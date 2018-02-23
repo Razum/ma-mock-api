@@ -2,30 +2,32 @@ Section:
   type: object
   properties:
     protocol:
+      description: "Protocol version"
       type: integer
       minimum: 1
       maximum: 100
     id:
+      description: "Unique identifier representing a specific section"
       type: string
       x-chance-type: guid
-      description: "Unique identifier representing a specific section"
     title:
-      type: string
       description: "Section title"
+      type: string
     subsections:
+      description: "List of section's subsections"
       type: array
       items:
         type: object
         properties:
           id:
+            description: "Unique identifier representing a specific subsection"
             type: string
             x-chance-type: guid
-            description: "Unique identifier representing a specific subsection"
           title:
-            type: string
             description: "Subsection Title"
+            type: string
     questions:
-      type: array
       description: "List of questions related to this section"
+      type: array
       items:
         $ref: 'Question.yaml#/Question'
