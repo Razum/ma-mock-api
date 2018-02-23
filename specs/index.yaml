@@ -63,7 +63,29 @@ paths:
       responses:
         200:
           schema:
-            $ref: 'definitions/Answer.yaml#/Answer'
+            $ref: 'definitions/AnswerGET.yaml#/Answer'
+    post:
+      parameters:
+        answers:
+          in: body
+          schema:
+            type: object
+            properties:
+              protocol:
+                $ref: 'definitions/Protocol.yaml#/Protocol'
+              data:
+                type: array
+                items:
+                  $ref: 'definitions/AnswerPOST.yaml#/Answer'
+          required: true
+      responses:
+        200:
+          schema:
+            type: integer
+        default:
+          description: Unexpected error
+          schema:
+            $ref: 'definitions/Error.yaml#/Error'
 
   /answers/{facilityId}/section/{sectionId}:
     get:
@@ -81,7 +103,7 @@ paths:
       responses:
         200:
           schema:
-            $ref: 'definitions/Answer.yaml#/Answer'
+            $ref: 'definitions/AnswerGET.yaml#/Answer'
 
   /answers/{facilityId}/{questionId}:
     get:
