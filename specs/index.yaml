@@ -22,7 +22,7 @@ paths:
             items:
               $ref: 'definitions/Question.yaml#/Question'
         default:
-          description: Unexpected error
+          description: "Unexpected error"
           schema:
             $ref: 'definitions/Error.yaml#/Error'
 
@@ -35,7 +35,7 @@ paths:
             items:
               $ref: 'definitions/Section.yaml#/Section'
         default:
-          description: Unexpected error
+          description: "Unexpected error"
           schema:
             $ref: 'definitions/Error.yaml#/Error'
 
@@ -51,6 +51,10 @@ paths:
         200:
           schema:
             $ref: 'definitions/Section.yaml#/Section'
+        default:
+          description: "Unexpected error"
+          schema:
+            $ref: 'definitions/Error.yaml#/Error'
 
   /answers/{facilityId}:
     get:
@@ -64,6 +68,10 @@ paths:
         200:
           schema:
             $ref: 'definitions/AnswerGET.yaml#/Answer'
+        default:
+          description: "Unexpected error"
+          schema:
+            $ref: 'definitions/Error.yaml#/Error'
     post:
       parameters:
         answers:
@@ -104,6 +112,10 @@ paths:
         200:
           schema:
             $ref: 'definitions/AnswerGET.yaml#/Answer'
+        default:
+          description: "Unexpected error"
+          schema:
+            $ref: 'definitions/Error.yaml#/Error'
 
   /answers/{facilityId}/{questionId}:
     get:
@@ -122,6 +134,10 @@ paths:
         200:
           schema:
             $ref: 'definitions/Question.yaml#/Question'
+        default:
+          description: "Unexpected error"
+          schema:
+            $ref: 'definitions/Error.yaml#/Error'
 
   /users/{userId}:
     get:
@@ -135,6 +151,10 @@ paths:
         200:
           schema:
             $ref: 'definitions/User.yaml#/User'
+        default:
+          description: "Unexpected error"
+          schema:
+            $ref: 'definitions/Error.yaml#/Error'
 
   /users/{userId}/assignments:
     get:
@@ -150,6 +170,36 @@ paths:
             type: array
             items:
               $ref: 'definitions/Assignment.yaml#/Assignment'
+        default:
+          description: "Unexpected error"
+          schema:
+            $ref: 'definitions/Error.yaml#/Error'
+    post:
+      parameters:
+        body:
+          type: object
+          in: body
+          schema:
+            type: object
+            properties:
+              address:
+                description: "Address from Google API"
+                type: string
+                x-chance-type: address
+              latitude:
+                description: "Location Latitude"
+                x-chance-type: latitude
+              longitude:
+                description: "Location Longitude"
+                x-chance-type: longitude
+
+      responses:
+        200:
+          schema:
+            type: integer
+        default:
+          description: "Unexpected error"
+          schema: 'definitions/Error.yaml#/Error'
 
   /users/{userId}/assignments/{assignmentId}:
     get:
@@ -168,4 +218,8 @@ paths:
         200:
           schema:
             $ref: 'definitions/Assignment.yaml#/Assignment'
+        default:
+          description: "Unexpected error"
+          schema:
+            $ref: 'definitions/Error.yaml#/Error'
 
