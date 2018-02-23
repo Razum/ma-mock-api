@@ -2,10 +2,7 @@ Answer:
   type: object
   properties:
     protocol:
-      description: "Protocol version"
-      type: integer
-      minimum: 1
-      maximum: 100
+      $ref: 'Protocol.yaml#/Protocol'
     id:
       description: "Unique identifier representing a specific question"
       type: string
@@ -32,10 +29,7 @@ Answer:
         type: object
         properties:
           protocol:
-            description: "Protocol version"
-            type: integer
-            minimum: 1
-            maximum: 100
+            $ref: 'Protocol.yaml#/Protocol'
           id:
             description: "Unique identifier representing a specific question"
             type: string

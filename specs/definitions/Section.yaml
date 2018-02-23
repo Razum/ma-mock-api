@@ -1,11 +1,6 @@
 Section:
   type: object
   properties:
-    protocol:
-      description: "Protocol version"
-      type: integer
-      minimum: 1
-      maximum: 100
     id:
       description: "Unique identifier representing a specific section"
       type: string
