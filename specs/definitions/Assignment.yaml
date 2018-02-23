@@ -3,6 +3,39 @@ Assignment:
   properties:
     id:
       type: string
+      x-chance-type: guid
+      description: "Unique identifier representing a specific assigment"
     title:
       type: string
-      x-chance-type: name
+      x-chance-type: address
+    status:
+      oneOf:
+        - 'new'
+        - 'in-progress'
+        - 'on-review'
+        - 'completed'
+    progress:
+      type: integer
+      description: "Assigment completion progress (%)"
+      minimum: 1
+      maximum: 100
+    createdBy:
+      type: string
+      x-chance-type: guid
+      description: "Unique identifier representing a specific user"
+    createdAt:
+      type: integer
+      x-chance-type: timestamp
+      description: "Assigment create time"
+    completedAd:
+      type: integer
+      x-chance-type: timestamp
+      description: "Assigment complition time"
+    timeTracked:
+      type: integer,
+      x-chance-type: minutes
+      description: "Time spent for assigment"
+    facilityId:
+      type: string
+      x-chance-type: guid
+      description: "Unique identifier representing a specific facility"

@@ -14,7 +14,9 @@ Answer:
       x-chance-type: guid
       description: "Unique identifier representing a specific user"
     timestamp:
-      type: timestamp
+      type: integer
+      x-chance-type: timestamp
+      description: "Value set time"
     value:
       anyOf:
         - type: string
@@ -23,6 +25,7 @@ Answer:
         - type: boolean
     history:
       type: array
+      description: "Answer changes history"
       items:
         type: object
         properties:
@@ -39,7 +42,9 @@ Answer:
             x-chance-type: guid
             description: "Unique identifier representing a specific user"
           timestamp:
-            type: timestamp
+            type: integer
+            x-chance-type: timestamp
+            description: "Value set time"
           value:
             anyOf:
               - type: string
