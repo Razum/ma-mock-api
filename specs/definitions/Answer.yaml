@@ -1,2 +1,48 @@
 Answer:
-  type: string
+  type: object
+  properties:
+    protocol:
+      type: integer
+      minimum: 1
+      maximum: 100
+    id:
+      type: string
+      x-chance-type: guid
+      description: "Unique identifier representing a specific question"
+    uid:
+      type: string
+      x-chance-type: guid
+      description: "Unique identifier representing a specific user"
+    timestamp:
+      type: timestamp
+    value:
+      anyOf:
+        - type: string
+        - type: number
+        - type: integer
+        - type: boolean
+    history:
+      type: array
+      items:
+        type: object
+        properties:
+          protocol:
+            type: integer
+            minimum: 1
+            maximum: 100
+          id:
+            type: string
+            x-chance-type: guid
+            description: "Unique identifier representing a specific question"
+          uid:
+            type: string
+            x-chance-type: guid
+            description: "Unique identifier representing a specific user"
+          timestamp:
+            type: timestamp
+          value:
+            anyOf:
+              - type: string
+              - type: number
+              - type: integer
+              - type: boolean
