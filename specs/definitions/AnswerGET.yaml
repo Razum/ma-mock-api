@@ -13,7 +13,7 @@ Answer:
       x-chance-type: guid
     timestamp:
       description: "Value set time"
-      type: integer
+      type: number
       x-chance-type: timestamp
     value:
       description: "Answer value"
@@ -22,6 +22,11 @@ Answer:
         - type: number
         - type: integer
         - type: boolean
+      x-chance-type: pick
+      x-type-options:
+        - boolean
+        - string
+        - number
     history:
       description: "Answer modifications history"
       type: array
@@ -40,7 +45,7 @@ Answer:
             x-chance-type: guid
           timestamp:
             description: "Value set time"
-            type: integer
+            type: number
             x-chance-type: timestamp
           value:
             description: "Answer value"
@@ -49,3 +54,8 @@ Answer:
               - type: number
               - type: integer
               - type: boolean
+            x-chance-type: pick
+            x-type-options:
+              - boolean
+              - string
+              - number
