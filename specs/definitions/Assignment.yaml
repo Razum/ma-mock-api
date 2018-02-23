@@ -2,7 +2,49 @@ Assignment:
   type: object
   properties:
     id:
+      description: "Unique identifier representing a specific assigment"
       type: string
+      x-chance-type: guid
     title:
+      description: "Assigment title (Address)"
       type: string
-      x-chance-type: name
+      x-chance-type: address
+    status:
+      description: "Assigment status"
+      type: string
+      enum:
+        - 'new'
+        - 'in-progress'
+        - 'on-review'
+        - 'completed'
+      x-chance-type: pick
+      x-type-options:
+        - 'new'
+        - 'in-progress'
+        - 'on-review'
+        - 'completed'
+    progress:
+      description: "Assigment completion progress (%)"
+      type: integer
+      minimum: 1
+      maximum: 100
+    createdBy:
+      description: "Unique identifier representing a specific user"
+      type: string
+      x-chance-type: guid
+    createdAt:
+      description: "Assigment creation time"
+      type: integer
+      x-chance-type: timestamp
+    completedAd:
+      description: "Assigment complition time"
+      type: integer
+      x-chance-type: timestamp
+    timeTracked:
+      description: "Time spent for assigment"
+      type: integer,
+      x-chance-type: minutes
+    facilityId:
+      description: "Unique identifier representing a specific facility"
+      type: string
+      x-chance-type: guid

@@ -4,39 +4,53 @@ Answer:
     protocol:
       $ref: 'Protocol.yaml#/Protocol'
     id:
-      type: string
-      x-chance-type: guid
       description: "Unique identifier representing a specific question"
-    uid:
       type: string
       x-chance-type: guid
+    uid:
       description: "Unique identifier representing a specific user"
+      type: string
+      x-chance-type: guid
     timestamp:
-      type: timestamp
+      description: "Value set time"
+      type: integer
+      x-chance-type: timestamp
     value:
+      description: "Answer value"
       anyOf:
         - type: string
         - type: number
         - type: integer
         - type: boolean
     history:
+      description: "Answer modifications history"
       type: array
       items:
         type: object
         properties:
           protocol:
+<<<<<<< HEAD:specs/definitions/AnswerGET.yaml
             $ref: 'Protocol.yaml#/Protocol'
+=======
+            description: "Protocol version"
+            type: integer
+            minimum: 1
+            maximum: 100
+>>>>>>> 1b8a9ef1001b9ce041ca57ef7c0cae97e07e1c66:specs/definitions/Answer.yaml
           id:
-            type: string
-            x-chance-type: guid
             description: "Unique identifier representing a specific question"
-          uid:
             type: string
             x-chance-type: guid
+          uid:
             description: "Unique identifier representing a specific user"
+            type: string
+            x-chance-type: guid
           timestamp:
-            type: timestamp
+            description: "Value set time"
+            type: integer
+            x-chance-type: timestamp
           value:
+            description: "Answer value"
             anyOf:
               - type: string
               - type: number
