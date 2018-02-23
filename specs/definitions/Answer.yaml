@@ -2,50 +2,54 @@ Answer:
   type: object
   properties:
     protocol:
+      description: "Protocol version"
       type: integer
       minimum: 1
       maximum: 100
     id:
-      type: string
-      x-chance-type: guid
       description: "Unique identifier representing a specific question"
-    uid:
       type: string
       x-chance-type: guid
+    uid:
       description: "Unique identifier representing a specific user"
+      type: string
+      x-chance-type: guid
     timestamp:
+      description: "Value set time"
       type: integer
       x-chance-type: timestamp
-      description: "Value set time"
     value:
+      description: "Answer value"
       anyOf:
         - type: string
         - type: number
         - type: integer
         - type: boolean
     history:
+      description: "Answer modifications history"
       type: array
-      description: "Answer changes history"
       items:
         type: object
         properties:
           protocol:
+            description: "Protocol version"
             type: integer
             minimum: 1
             maximum: 100
           id:
-            type: string
-            x-chance-type: guid
             description: "Unique identifier representing a specific question"
-          uid:
             type: string
             x-chance-type: guid
+          uid:
             description: "Unique identifier representing a specific user"
+            type: string
+            x-chance-type: guid
           timestamp:
+            description: "Value set time"
             type: integer
             x-chance-type: timestamp
-            description: "Value set time"
           value:
+            description: "Answer value"
             anyOf:
               - type: string
               - type: number
