@@ -17,12 +17,6 @@ Assignment:
         - 'in-progress'
         - 'on-review'
         - 'completed'
-      x-chance-type: pick
-      x-type-options:
-        - 'new'
-        - 'in-progress'
-        - 'on-review'
-        - 'completed'
     progress:
       description: "Assigment completion progress (%)"
       type: integer
