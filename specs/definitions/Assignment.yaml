@@ -28,16 +28,16 @@ Assignment:
       x-chance-type: guid
     createdAt:
       description: "Assigment creation time"
-      type: integer
+      type: number
       x-chance-type: timestamp
     completedAd:
       description: "Assigment complition time"
-      type: integer
+      type: number
       x-chance-type: timestamp
     timeTracked:
       description: "Time spent for assigment"
       type: integer,
-      x-chance-type: minutes
+      x-chance-type: minute
     facilityId:
       description: "Unique identifier representing a specific facility"
       type: string
