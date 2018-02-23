@@ -29,14 +29,7 @@ Answer:
         type: object
         properties:
           protocol:
-<<<<<<< HEAD:specs/definitions/AnswerGET.yaml
             $ref: 'Protocol.yaml#/Protocol'
-=======
-            description: "Protocol version"
-            type: integer
-            minimum: 1
-            maximum: 100
->>>>>>> 1b8a9ef1001b9ce041ca57ef7c0cae97e07e1c66:specs/definitions/Answer.yaml
           id:
             description: "Unique identifier representing a specific question"
             type: string
