@@ -2,11 +2,93 @@ Question:
   type: object
   properties:
     id:
+      description: "Unique identifier representing a specific question"
       type: string
-      description: 'Unique identifier representing a specific question'
+      x-chance-type: guid
+    alias:
+      description: "Question alias. Used to map question to real form"
+      type: string
+      x-chance-type: sentence
+        words: 2
+    section:
+      $ref: 'Section.yaml#/Section'
+    subsection:
+      $ref: 'Section.yaml#/Subsection'
     description:
+      message: "Question message"
       type: string
-      description: 'Question description.'
+      x-chance-type: sentence
+      x-type-options:
+        words: 20
+    description:
+      description: "Question description"
+      type: string
       x-chance-type: sentence
       x-type-options:
         words: 5
+    conditions:
+      description: "Question confitions to show"
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            description: "Unique identifier representing a specific question"
+            type: string
+            x-chance-type: guid
+          value:
+            description: "Answer value"
+            anyOf:
+              - type: string
+              - type: number
+              - type: integer
+              - type: boolean
+            x-chance-type: pick
+            x-type-options:
+              - boolean
+              - string
+              - number
+    value:
+      type: object
+      properties:
+        type:
+          description: "Question type"
+          enum:
+            - 'new'
+            - 'in-progress'
+            - 'on-review'
+            - 'completed'
+        values:
+          description: "Question type"
+          type: array
+          item: 
+        has_optional:
+          description: ""
+          type: string
+        min:
+          type: integer
+          minimum: 1
+          maximum: 100
+        max:
+          type: integer
+          minimum: 1
+          maximum: 100
+        default:
+          description: ""
+          type: string
+        format:
+          description: ""
+          enum:
+            - money 
+            - date
+            - sqft
+    pcif:
+      description: "Property Contact Interview Form"
+      type: boolean
+    arf:
+      description: "Assignment Research Form"
+      type: boolean
+    if:
+      description: "Inspection Form"
+      type: boolean
+      

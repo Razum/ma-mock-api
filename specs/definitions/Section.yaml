@@ -12,17 +12,19 @@ Section:
       description: "List of section's subsections"
       type: array
       items:
-        type: object
-        properties:
-          id:
-            description: "Unique identifier representing a specific subsection"
-            type: string
-            x-chance-type: guid
-          title:
-            description: "Subsection Title"
-            type: string
+        $ref: 'Section.yaml#/Subsection'
     questions:
       description: "List of questions related to this section"
       type: array
       items:
         $ref: 'Question.yaml#/Question'
+Subsection:
+  type: object
+  properties:
+    id:
+      description: "Unique identifier representing a specific subsection"
+      type: string
+      x-chance-type: guid
+    title:
+      description: "Subsection Title"
+      type: string
