@@ -11,7 +11,7 @@ produces:
 paths:
   /questions:
     get:
-      summary: Questions list
+      summary: "GET Questions list"
       description: |
         The Questions endpoint returns all appraisal form questions
       responses:
@@ -28,6 +28,7 @@ paths:
 
   /sections:
     get:
+      summary: "Get List of sections"
       responses:
         200:
           schema:
@@ -41,6 +42,7 @@ paths:
 
   /sections/{sectionId}:
     get:
+      summary: "Get section details"
       parameters:
         sectionId:
           in: path
@@ -58,6 +60,7 @@ paths:
 
   /answers/{facilityId}:
     get:
+      summary: "GET answers for selected assignment"
       parameters:
         facilityId:
           in: path
@@ -73,6 +76,7 @@ paths:
           schema:
             $ref: 'definitions/Error.yaml#/Error'
     post:
+      summary: "Save answers"
       parameters:
         answers:
           in: body
@@ -97,6 +101,7 @@ paths:
 
   /answers/{facilityId}/section/{sectionId}:
     get:
+      summary: "GET answers for section"
       parameters:
         facilityId:
           in: path
@@ -119,6 +124,7 @@ paths:
 
   /answers/{facilityId}/{questionId}:
     get:
+      summary: "GET detailed answer with history for selected question"
       parameters:
         facilityId:
           in: path
@@ -141,6 +147,7 @@ paths:
 
   /users/{userId}:
     get:
+      summary: "GET user info"
       parameters:
         userId:
           in: path
@@ -158,6 +165,7 @@ paths:
 
   /users/{userId}/assignments:
     get:
+      summary: "GET user assignments"
       parameters:
         userId:
           in: path
@@ -196,13 +204,14 @@ paths:
       responses:
         200:
           schema:
-            type: integer
+            $ref: 'definitions/Assignment.yaml#/Assignment'
         default:
           description: "Unexpected error"
           schema: 'definitions/Error.yaml#/Error'
 
   /users/{userId}/assignments/{assignmentId}:
     get:
+      summary: "GET assignment details"
       parameters:
         userId:
           in: path
