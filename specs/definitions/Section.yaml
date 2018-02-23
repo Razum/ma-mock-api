@@ -1,2 +1,31 @@
 Section:
-  type: string
+  type: object
+  properties:
+    protocol:
+      type: integer
+      minimum: 1
+      maximum: 100
+    id:
+      type: string
+      x-chance-type: guid
+      description: "Unique identifier representing a specific section"
+    title:
+      type: string
+      description: "Section title"
+    subsections:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: string
+            x-chance-type: guid
+            description: "Unique identifier representing a specific subsection"
+          title:
+            type: string
+            description: "Subsection Title"
+    questions:
+      type: array
+      description: "List of questions related to this section"
+      items:
+        $ref: 'Question.yaml#/Question'
