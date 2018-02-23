@@ -2,7 +2,26 @@ User:
   type: object
   properties:
     id:
+      description: "Unique identifier representing a specific user"
       type: string
+      x-chance-type: guid
     name:
+      description: "Full user name"
       type: string
       x-chance-type: name
+    photo:
+      description: "User photo"
+      type: string
+      x-chance-type: pick
+      x-type-options:
+        - "http://via.placeholder.com/300x300"
+        - "http://via.placeholder.com/350x200"
+        - "http://via.placeholder.com/200x300"
+    role:
+      description: "User role"
+      type: string
+      x-chance-type: pick
+      x-type-options:
+        - IHA
+        - Appraiser
+        - TPI
