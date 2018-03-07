@@ -3,16 +3,16 @@ Answer:
   properties:
     id:
       description: "Unique identifier representing a specific question"
-      type: string
       x-chance-type: guid
     uid:
       description: "Unique identifier representing a specific user"
-      type: string
       x-chance-type: guid
     value:
       description: "Answer value"
-      anyOf:
-        - type: string
-        - type: number
-        - type: integer
-        - type: boolean
+      x-chance-type: pick
+      x-type-options:
+        - true
+        - false
+        - 'STRING_VALUE'
+        - 1
+        - 10

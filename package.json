@@ -10,7 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.2",
-    "swagger-mock-api": "^1.5.2"
+    "swagger-mock-api": "^1.6.0"
   },
   "devDependencies": {
     "cors": "^2.8.4"

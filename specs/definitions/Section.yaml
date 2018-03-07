@@ -3,7 +3,6 @@ Section:
   properties:
     id:
       description: "Unique identifier representing a specific section"
-      type: string
       x-chance-type: guid
     title:
       description: "Section title"
@@ -23,7 +22,6 @@ Subsection:
   properties:
     id:
       description: "Unique identifier representing a specific subsection"
-      type: string
       x-chance-type: guid
     title:
       description: "Subsection Title"

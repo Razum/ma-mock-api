@@ -6,7 +6,10 @@ const cors = require('cors');
 const app = express();
 const specFile = path.join(__dirname, 'specs/index.yaml');
 
-app.use(cors());
+app.use(cors({
+  origin: 'http://localhost:3030',
+  credentials: true
+}));
 
 app.use(mock({
     swaggerFile: specFile,

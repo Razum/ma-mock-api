@@ -3,15 +3,12 @@ Assignment:
   properties:
     id:
       description: "Unique identifier representing a specific assigment"
-      type: string
       x-chance-type: guid
     title:
       description: "Assigment title (Address)"
-      type: string
       x-chance-type: address
     status:
       description: "Assigment status"
-      type: string
       enum:
         - 'new'
         - 'in-progress'
@@ -24,21 +21,32 @@ Assignment:
       maximum: 100
     createdBy:
       description: "Unique identifier representing a specific user"
-      type: string
       x-chance-type: guid
     createdAt:
       description: "Assigment creation time"
-      type: number
       x-chance-type: timestamp
     completedAd:
       description: "Assigment complition time"
-      type: number
       x-chance-type: timestamp
-    timeTracked:
-      description: "Time spent for assigment"
-      type: integer,
-      x-chance-type: minute
     facilityId:
       description: "Unique identifier representing a specific facility"
-      type: string
       x-chance-type: guid
+    sections:
+      type: array
+      items:
+        type: object
+        required:
+          - title
+        properties:
+          id:
+            x-chance-type: guid
+          title:
+            type: string
+          progress:
+            description: "Sectiom completion progress (%)"
+            type: integer
+            minimum: 1
+            maximum: 100
+            required: false
+
+

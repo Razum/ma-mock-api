@@ -58,11 +58,31 @@ paths:
           schema:
             $ref: 'definitions/Error.yaml#/Error'
 
-  /answers/{facilityId}:
+  /sections/{sectionId}/questions:
+    get:
+      summary: "Get section details"
+      parameters:
+        sectionId:
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        200:
+          schema:
+            type: array
+            items:
+              $ref: 'definitions/Question.yaml#/Question'
+        default:
+          description: "Unexpected error"
+          schema:
+            $ref: 'definitions/Error.yaml#/Error'
+
+  /answers/{assignmentId}:
     get:
       summary: "GET answers for selected assignment"
       parameters:
-        facilityId:
+        assignmentId:
           in: path
           schema:
             type: string
@@ -99,11 +119,11 @@ paths:
           schema:
             $ref: 'definitions/Error.yaml#/Error'
 
-  /answers/{facilityId}/section/{sectionId}:
+  /answers/{assignmentId}/section/{sectionId}:
     get:
       summary: "GET answers for section"
       parameters:
-        facilityId:
+        assignmentId:
           in: path
           schema:
             type: string
@@ -116,17 +136,19 @@ paths:
       responses:
         200:
           schema:
-            $ref: 'definitions/AnswerGET.yaml#/Answer'
+            type: array
+            items:
+              $ref: 'definitions/AnswerGET.yaml#/Answer'
         default:
           description: "Unexpected error"
           schema:
             $ref: 'definitions/Error.yaml#/Error'
 
-  /answers/{facilityId}/{questionId}:
+  /answers/{assignmentId}/{questionId}:
     get:
       summary: "GET detailed answer with history for selected question"
       parameters:
-        facilityId:
+        assignmentId:
           in: path
           schema:
             type: string
@@ -139,7 +161,7 @@ paths:
       responses:
         200:
           schema:
-            $ref: 'definitions/Question.yaml#/Question'
+            $ref: 'definitions/AnswerGET.yaml#/Answer'
         default:
           description: "Unexpected error"
           schema:
@@ -183,6 +205,7 @@ paths:
           schema:
             $ref: 'definitions/Error.yaml#/Error'
     post:
+      summary: "Send location to obtain assignment"
       parameters:
         body:
           type: object

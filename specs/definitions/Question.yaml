@@ -3,26 +3,25 @@ Question:
   properties:
     id:
       description: "Unique identifier representing a specific question"
-      type: string
-      x-chance-type: guid
+      type: integer
+      minimum: 1
+      maximum: 20
     alias:
       description: "Question alias. Used to map question to real form"
-      type: string
       x-chance-type: sentence
+      x-type-options:
         words: 2
     section:
-      $ref: 'Section.yaml#/Section'
-    subsection:
-      $ref: 'Section.yaml#/Subsection'
-    description:
-      message: "Question message"
       type: string
+    subsection:
+      type: string
+    message:
+      message: "Question message"
       x-chance-type: sentence
       x-type-options:
         words: 20
     description:
       description: "Question description"
-      type: string
       x-chance-type: sentence
       x-type-options:
         words: 5
@@ -34,54 +33,88 @@ Question:
         properties:
           id:
             description: "Unique identifier representing a specific question"
-            type: string
-            x-chance-type: guid
+            type: integer
+            minimum: 1
+            maximum: 50
           value:
-            description: "Answer value"
-            anyOf:
-              - type: string
-              - type: number
-              - type: integer
-              - type: boolean
             x-chance-type: pick
             x-type-options:
-              - boolean
-              - string
-              - number
+              - 'STRING_ANSWER'
+              - true
+              - false
+              - 1
+              - 33
     value:
       type: object
       properties:
         type:
-          description: "Question type"
           enum:
-            - 'new'
-            - 'in-progress'
-            - 'on-review'
-            - 'completed'
-        values:
-          description: "Question type"
-          type: array
-          item: 
+          - 'checkbox'
+          - 'text'
+          - 'textarea'
+          - 'radio'
+          - 'number'
+          - 'date'
         has_optional:
-          description: ""
+          decription: "Used to support Other option in single-* and multi-choice questions"
           type: string
         min:
           type: integer
           minimum: 1
-          maximum: 100
+          maximum: 50
         max:
           type: integer
-          minimum: 1
+          minimum: 50
           maximum: 100
         default:
-          description: ""
+          description: "Default value"
           type: string
+        required:
+          description: "Is this question required to be filled to complete form"
+          type: boolean
+        pdf_limit:
+          description: "Limit to put value into PDF document"
+          type: integer
+          minimum: 0
+          maximum: 35
+        pdf_rules:
+          description: "Rules to combine valued into one PDF field"
+          type: array
+          items:
+            type: string
+        datasource_rules:
+          description: "Source priority rules"
+          type: array
+          items:
+            type: string
         format:
-          description: ""
+          description: "Expected value format"
           enum:
-            - money 
-            - date
-            - sqft
+          - 'address'
+          - 'date'
+          - 'year'
+          - 'price'
+          - 'sqft'
+          - 'number'
+        values:
+          type: array
+          items:
+            type: object
+            properties:
+              value:
+                type: string
+              indicator:
+                type: string
+              label:
+                type: string
+                x-chance-type: sentence
+                x-type-options:
+                  words: 2
+              description:
+                type: string
+                x-chance-type: sentence
+                x-type-options:
+                  words: 5
     pcif:
       description: "Property Contact Interview Form"
       type: boolean
@@ -91,4 +124,3 @@ Question:
     if:
       description: "Inspection Form"
       type: boolean
-      
